@@ -7,3 +7,10 @@
   background-color: #fff;
   border-radius: 10px;
 }
+.darkTheme {
+  background: #201F24;
+  color: #E6E1E5;
+}
+.selected {
+  background: rgba(255, 255, 255, 0.5);
+}

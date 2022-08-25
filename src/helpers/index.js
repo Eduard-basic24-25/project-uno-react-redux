@@ -1,7 +1,11 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import ThemeContext from '../components/themes/themes-content';
 
 
-
+export const useTheme = () => {
+  const value = useContext(ThemeContext)
+  return value
+}
 // контроль даты yyyy-MM-dd
 function useDate(timeElapsed){
   const today = new Date(timeElapsed);

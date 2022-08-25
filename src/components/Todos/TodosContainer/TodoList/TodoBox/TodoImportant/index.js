@@ -7,8 +7,8 @@ function TodoImportant({todoId}) {
   const dispatch = useDispatch();
 
   const selectedListId = useSelector(
-    state => state.lists.content.find( list => list.selected ).id
-  )
+    state => state.interface.listId)
+  
 
   function importantClick(e) {
     e.stopPropagation();
@@ -19,7 +19,7 @@ function TodoImportant({todoId}) {
     state => 
       state.lists
         .content.find( list =>  list.id === selectedListId)
-        .todos.find( todoItem => todoId === todoItem.id)?.important
+        ?.todos.find( todoItem => todoId === todoItem.id)?.important
   )
 
   return(

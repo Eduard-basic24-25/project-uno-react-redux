@@ -13,4 +13,13 @@
   border: none;
   font-size: 1.3rem;
   font-family: sans-serif;
+ 
+}
+
+.darkTheme input[type='text']{
+  background: inherit;
+  color: #E6E1E5;
+}
+.checkBox {
+  transform: scale(1.4);
 }

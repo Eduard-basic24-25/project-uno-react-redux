@@ -5,11 +5,16 @@ import {
 	CHANGE_HEADER,
 	CHANGE_DATE,
 	DELETE_TODO,
+	DELETE_LIST,
 	CHANGE_TODO_TITLE,
 	CHANGE_TODO_NOTE,
 	ADD_TODO,
-
+	ADD_IMPORTANT_TODO,
+	ADD_LIST,
+	
+	
 } from './actions.js';
+import { createDate } from '../../helpers/index.js';
 
 
 function todoComplete(listId, todoId) {
@@ -69,6 +74,14 @@ function deleteTodo(listId,todoId) {
 		}
 	}
 }
+function deleteList(listId) {
+	return {
+		type: DELETE_LIST,
+		payload: {
+			listId,
+		}
+	}
+}
 function changeTodoTitle(listId,todoId,title) {
 	return {
 		type: CHANGE_TODO_TITLE,
@@ -89,19 +102,52 @@ function changeTodoNote(listId,todoId,note) {
 		}
 	}
 }
-function addTodo(id,title,note,date,createDate,completed,important,selected) {
+function addTodo(title,selectedListId) {
 	return {
 		type: ADD_TODO,
-		payload:  {
-			id: Date.now(),
-			title,
-			note,
-			date: createDate(),
-			createDate: createDate(),
-			completed: false,
-			important: false,
-			selected: false,
-		  }
+		payload: {
+			selectedListId,
+			todo: 
+			{
+				id: Date.now(),
+				title,
+				note:'',
+				date: createDate(),
+				createDate: createDate(),
+				completed: false,
+				important: false,
+				selected: false,
+			  }
+		} 
+	}
+}
+function addImportantTodo(title,selectedListId) {
+	return {
+		type: ADD_IMPORTANT_TODO,
+		payload: {
+			selectedListId,
+			todo: 
+			{
+				id: Date.now(),
+				title,
+				note:'',
+				date: createDate(),
+				createDate: createDate(),
+				completed: false,
+				important: true,
+				selected: false,
+			  }
+		} 
+	}
+}
+function addList(title) {
+	return {
+		type: ADD_LIST,
+		payload: {
+				id: Date.now(),
+				header: title,
+				todos: [],
+		}
 	}
 }
 
@@ -114,8 +160,11 @@ export {
 	changeHeader,
 	changeDate,
 	deleteTodo,
+	deleteList,
 	changeTodoTitle,
 	changeTodoNote,
 	addTodo,
+	addList,
+	addImportantTodo,
 };
 

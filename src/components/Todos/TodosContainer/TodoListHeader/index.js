@@ -1,66 +1,65 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { useTextInput } from '../../../../helpers'
-import { changeHeader } from '../../../../storage/content/actionsCreactor';
+
+import { showDeleteListWindow, showRenameWindow } from '../../../../storage/interface/actionsCreactor'
 
 import style from './index.module.css'
 
-function TodoListHeader ({lists, setLists, selectedList}){
-  const headerInput = useRef(null);
+function TodoListHeader (){
 
   const dispatch = useDispatch();
 
-  const [disabled, setDisabled] = useState(true);
+
 
   const selectedListId = useSelector(
-    state => state.lists.content.find( list => list.selected)?.id)
-    
+    state => state.interface.listId)
+  const tab = useSelector (state => state.interface.tab)
+  const searchString = useSelector(state => state.interface.searchString)
     const header = useSelector(
-      state => 
-      state.lists
-    .content.find( list =>  list.id === selectedListId).header)
+      state => state.lists
+    .content.find( list =>  list.id === selectedListId)?.header)
     
-    const [title, setTitle, bindTitle] = useTextInput(header);
+    function openRenameWindow () {
+      dispatch(showRenameWindow(true))
+    }
 
+ 
+  if(searchString){
+    return (
+      <div className={style.headingWrapper}>
 
-
-  useEffect(
-    function onFocus() {
-      if(!disabled) {
-        headerInput.current.focus();
-      }
-    }, [disabled]
+        <p className={style.todosHeading}>
+          Search
+        </p>
+     
+    </div>
   )
-    
+  }  
+  if(tab === 'Important'){
+    return (
+      <div className={style.headingWrapper}>
 
-  function changeTodoListHeader(e){
-    e.preventDefault();
-
-    dispatch(changeHeader(title))
-
-    setDisabled(true);
-  }
-
+        <p className={style.todosHeading}>
+          {tab}
+        </p>
+     
+    </div>
+  )
+  }  
   return (
     <div className={style.headingWrapper}>
-      <form 
-        onSubmit={(e) => changeTodoListHeader(e)}
-      >
-        <input 
-            type='text'
-            className={style.todosHeading}
-            {...bindTitle}
-            disabled={disabled}
-            ref={headerInput}
-        /> 
-      </form>
+      
+      <p className={style.todosHeading}>
+        {header}
+      </p>
       <div className={style.headingBtnWrapper}>
       <button
           className={`${style.headingBtn} ${style.headingEdit}`}
-          onClick={() => setDisabled(false)}
+          onClick={openRenameWindow}
         ></button>
         <button
           className={`${style.headingBtn} ${style.headingDelete}`}
+          onClick={() => dispatch(showDeleteListWindow(true))}
         ></button>
       </div>
     </div>

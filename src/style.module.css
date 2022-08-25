@@ -1,0 +1,24 @@
+:root {
+  --bg-dark: #201F24;
+  --bg-light: #fff;
+  --bg-palette: #544794;
+}
+.mainConteiner{
+    display: flex;
+    width: 100%;
+    background-color: var(--bg-light);
+    color: #1C1B1F;
+}
+
+ .darkTheme {
+  background-color: var(--bg-dark);
+  color:#F4F4F4; 
+} 
+ .darkTheme p {
+  color: #E6E1E5;
+} 
+ .darkTheme span {
+  color: rgba(230, 225, 229, 0.6);
+} 
+
+

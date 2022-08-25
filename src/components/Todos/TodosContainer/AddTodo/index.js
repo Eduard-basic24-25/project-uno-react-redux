@@ -1,24 +1,22 @@
-import {useState} from 'react';
+
 import style from './index.module.css'
-import { useDispatch,  } from 'react-redux';
-import { showPanelTodo } from '../../../../storage/interface/actionsCreactor'
+import { useDispatch } from 'react-redux';
+import { showModalWindow } from '../../../../storage/interface/actionsCreactor'
 
 
 function AddTodo(){
 
   const dispatch = useDispatch();
-  
-	function showPanel(e) {
-		e.preventDefault();
-		dispatch(showPanelTodo(true));
-	}
 
+
+	function showModal() {
+		dispatch(showModalWindow(true));
+	}
 
   return (  
       <button 
-        type='submit'
         className={style.addButton}
-        onClick={showPanel}
+        onClick={showModal}
       >Add a task</button>
     )
 }

@@ -1,12 +1,24 @@
 .startPage {
   display: flex;
-  background-color: rgba(89, 70, 210, 0.08);
+  background: #FFFFFF;
+}
+.startPageDarkTheme {
+  background: #201F24;
+  color:#fff;
+  
+}
+.logoDarkTheme { 
+  width: 103px;
+  height: 30px;
+  background: url('../../img/uno_platform_logo_dark.png') no-repeat;
+  background-size: contain;
+  background-position: center;
 }
 
 .startSideBar {
   padding: 0 60px;
   width: 450px;
-  background-color: #fff;
+  background-color: inherit;
   height: 100vh;
   display: flex;
   align-items: flex-start;
@@ -20,6 +32,10 @@
   background: url('../../img/welcome_uno.png') no-repeat;
   background-size: contain;
   background-position: center;
+  background-color: rgba(89, 70, 210, 0.08);
+}
+.darkTheme {
+  background-color: rgb(44, 42, 56);
 }
 
 .logo {
@@ -40,12 +56,15 @@
   line-height: 64px;
 }
 
-.textBox p {
+.desc {
   margin-top: 16px;
   font-weight: 600;
   font-size: 16px;
   line-height: 24px;
   color: #5835E5;
+}
+.descDarkTheme {
+  color : #CBBEFF;
 }
 
 .startedBtn {
@@ -58,4 +77,7 @@
   border-radius: 20px;
   text-decoration: none;
   text-align: center;
+}
+.btnDarkTheme {
+  background-color: #9373FF;
 }

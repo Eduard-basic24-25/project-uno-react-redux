@@ -1,47 +1,31 @@
 import style from './index.module.css'
+
 import {useShowDate} from '../../../../helpers'
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteTodo } from '../../../../storage/content/actionsCreactor'
-import { showPanelTodo } from '../../../../storage/interface/actionsCreactor'
+import { showPanelTodo, showConfirmWindow, } from '../../../../storage/interface/actionsCreactor'
 
-function TodoPanelDelete({
-  createTodoDate,
-}){
+
+function TodoPanelDelete({createTodoDate}){
 
   const dispatch = useDispatch();
-
-  const isShownPanelTodo = useSelector(state => state.interface.show);
-
-  const selectedListId = useSelector(
-    state => state.interface.listId
-  )
+  const theme = useSelector(state => state.themes.theme)
   
-  const selectedTodoId = useSelector(
-    state => state.interface.todoId
-  )
-
-  
-
-  
-
-
-  function removeTodo(){
-    dispatch(deleteTodo(selectedListId, selectedTodoId))
-    dispatch(showPanelTodo(false))
+  function openConfirnWindow(){
+    dispatch(showConfirmWindow(true))
   }
 
 
-
   return (
-    <div className={style.todoPanelDeleteWrapper}>
+    
+    <div  className={`${style.todoPanelDeleteWrapper} ${!createTodoDate ? style.hidden : ''}`} >
       <span 
-        className={style.todoPanelArrow}
+        className={`${theme === 'dark' ? style.arrowIconDarkTheme : style.todoPanelArrow}`}
         onClick={() => dispatch(showPanelTodo(false))}
       ></span>
       <p>Created {useShowDate(createTodoDate)}</p>
       <span 
-        className={style.todoPanelDelete}
-        onClick={() => {removeTodo()}}
+        className={`${theme === 'dark' ? style.deleteIconDarkTheme : style.todoPanelDelete}`}
+        onClick={openConfirnWindow}
         ></span>
     </div>
   )

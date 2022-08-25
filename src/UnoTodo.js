@@ -1,79 +1,42 @@
-import {useEffect, useState,useMemo } from 'react';
-import SideBar from './components/SideBar';
-import Todos from './components/Todos';
+import style from './style.module.css'
 import './common-styles/reset.css';
-import { useLists, createDate } from './helpers';
 
 import { useSelector } from 'react-redux';
+import SideBar from './components/SideBar';
+import Todos from './components/Todos';
+import RenameModalWindow from './components/Ui-kit/ListHeaderWindows/RenameModalWindow/RenameModalWindow';
+import AddListModalWindow from './components/Ui-kit/AddListModalWindow/AddListModalWindow';
+import DeleteListWindow from './components/Ui-kit/ListHeaderWindows/DeleteListWindow/DeleteListWindow';
+import ModalSettingsWindow from './components/Ui-kit/ModalSettingsWindow';
+import { DefaltList } from './components/defaultComponents/defaultList';
+
+
 
 function UnoTodo() {
 
-  const listDefault = [
-    {
-      id: '44444',
-      header: 'Task list',
-      todos: [
-        {
-          id: '11111',
-          title: 'Todo 1',
-          note: 'Do something important',
-          date: createDate(),
-          createDate: createDate(),
-          completed: true,
-          important: true,
-        },
-        {
-          id: '22222',
-          title: 'Todo 2',
-          note: 'Do something important',
-          date: createDate(),
-          createDate: createDate(),
-          completed: true,
-          important: true,
-        },
-        {
-          id: '33333',
-          title: 'Todo 3',
-          note: 'Do something',
-          date: createDate(),
-          createDate: createDate(),
-          completed: true,
-          important: true,
-        },
-      ]
-    },
-  ]
+  
+  const lists = useSelector(state => state.lists.content);
+  const addListModal = useSelector(state => state.interface.addListWindow)
+  const renameModalWindow = useSelector (state => state.interface.showRename)
+  const theme = useSelector (state => state.themes.theme)
 
-  const [lists, setLists] = useLists(listDefault);
-  const [selectedList, setSelectedList] = useState(0);
-
-  const selectedListId = useSelector(state => state.lists.content[0].id);
-
-
-
-
-
-
-
-
-
-  // useMemo(()=>{console.log(lists)},[lists])
 
   return (
-    <>
-      <SideBar 
-        lists = {lists} 
-        setLists = {setLists}
-        selectedList={selectedList}
-        setSelectedList={setSelectedList}
-      />
-      <Todos 
-        lists = {lists}  
-        setLists = {setLists}
-        selectedList={selectedList}
-        selectedListId={selectedListId}
-      />
-    </>
+      <div className={`${style.mainConteiner} ${theme == 'dark' ? style.darkTheme : ''}`}>
+        <SideBar/>
+        { 
+          !lists.length ? <DefaltList/>:  <Todos/>
+        }
+        {
+          addListModal ? <AddListModalWindow/> : undefined
+        } 
+        {
+          renameModalWindow ?   <RenameModalWindow/> : undefined
+        } 
+          <DeleteListWindow/>
+          <ModalSettingsWindow/>
+      </div>
+      
   )
 }
 
