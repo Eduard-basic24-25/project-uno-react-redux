@@ -1,7 +1,7 @@
 import style from './index.module.css'
 
 
-export const defaultTodos = () => {
+export const DefaultTodos = () => {
 
     return (
         <div className={style.defaultWrapper}>

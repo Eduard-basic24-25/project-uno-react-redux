@@ -8,47 +8,27 @@
   gap: 5px;
   padding-top: 15px;
 }
-.darkTheme {
-  color: rgba(230, 225, 229, 0.6);
-}
+
   
-.todoPanelDeleteWrapper p {
-  width: 55%;
+.date {
+  width: 75%;
   font-size: 14px;
+  text-align: center;
 }
 
-.todoPanelDeleteWrapper span {
-  /* display: inline-block;
-  width: 10%;
-  height: 20px;
-  background-position: center left; */
-}
 
 .todoPanelArrow {
   width: 11%;
   height: 20px;
-  background: url('../../../../img/arrow.svg') no-repeat;
   background-position: left;
-}
-.arrowIconDarkTheme {
-  width: 11%;
-  height: 20px;
-  background: url('../../../../img/arrowDarkTheme.svg') no-repeat;
-  background-position: right;
-}
-.deleteIconDarkTheme { 
-  width: 11%;
-  height: 20px;
-  background: url('../../../../img/deleteDarkTheme.svg') no-repeat;
-  background-position: left;
-  cursor: pointer;
+  background-repeat: no-repeat;
 }
 
 .todoPanelDelete {
   width: 11%;
   height: 20px;
-  background: url('../../../../img/delete.svg') no-repeat;
-  background-position: right;
+  background-repeat: no-repeat;
+  background-position: center;
   cursor: pointer;
 }
 .hidden { 

@@ -2,21 +2,17 @@ import  { SHOW_PANEL_TODO,
           SELECT_TODO_ID, 
           SELECT_LIST_ID, 
           SET_ACTIV_TAB, 
-          SHOW_MODAL_WINDOW,
-          SHOW_CONFIRM_WINDOW,
-          SHOW_RENAME_WINDOW,
-          SHOW_DELETE_LIST_WINDOW,
-          SHOW_ADD_LIST_WINDOW,
           SHOW_SETTINGS_WINDOW,
           SEARCH_STRING,
+          SHOW_CONFIRM_DIALOG,
+          SHOW_INPUT_MODAL,
            } from './actions';
 
 const initialState = {
-    showListDelete:false,
-    showRename:false,
-    showConfirm: false,
-    addListWindow:false,
-    showModal: false,
+    showConfirmModal: false,
+    modalConfig: {},
+    showInputDialog: false,
+    inputModalConfig: {},
     show: false,
     showSettings:false,
     todoId : 0,
@@ -38,35 +34,22 @@ function interfaceReducer( state = initialState, {type, payload}) {
             ...state,
             searchString: payload.searchString,
         }
-        case SHOW_MODAL_WINDOW: 
+        case SHOW_CONFIRM_DIALOG: 
         return {
             ...state,
-            showModal: payload.showModal,
+            showConfirmModal: payload.showConfirmModal,
+            modalConfig: payload.modalConfig
         }
-        case SHOW_ADD_LIST_WINDOW: 
+        case SHOW_INPUT_MODAL: 
         return {
             ...state,
-            addListWindow: payload.addListWindow,
-        }
-        case SHOW_CONFIRM_WINDOW: 
-        return {
-            ...state,
-            showConfirm: payload.showConfirm,
+            showInputDialog: payload.showInputDialog,
+            inputModalConfig: payload.inputModalConfig,
         }
         case SHOW_SETTINGS_WINDOW: 
         return {
             ...state,
             showSettings: payload.showSettings,
-        }
-        case SHOW_DELETE_LIST_WINDOW: 
-        return {
-            ...state,
-            showListDelete: payload.showListDelete,
-        }
-        case SHOW_RENAME_WINDOW: 
-        return {
-            ...state,
-            showRename: payload.showRename,
         }
         case SELECT_TODO_ID: 
         return {

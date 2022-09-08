@@ -1,7 +1,7 @@
 import style from './index.module.css';
 
+import {DefaultTodos} from '../../../defaultComponents/defaultTodos'
 import TodoBox from './TodoBox';
-import {defaultTodos} from '../../../defaultComponents/defaultTodos';
 import { useSelector } from 'react-redux';
 
 
@@ -39,15 +39,17 @@ function TodoList() {
       }
     }
 
-
   return (
-    <ul className={style.todoList}>
-        { 
-        !renderTodos?.length ?     
-        <div className={style.defaultWrapper}>
-        <h2 className={style.header}>Task not found</h2>
-        <p className={style.descr}>Please create any Task</p>
-        </div> // ???? 
+
+  
+     <ul className={style.todoList}>
+      {}
+        {  
+        !todos?.length 
+        ? <div className={style.defaultWrapper}>
+            <h2 className={style.header}>Task not found</h2>
+            <p className={style.descr}>Please create any Task</p>
+          </div>
         : renderTodos.map(todo => {
           return <TodoBox key={todo.id} todoId={todo.id}/>
         })}

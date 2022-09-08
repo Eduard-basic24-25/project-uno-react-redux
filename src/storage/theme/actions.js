@@ -1,5 +1,4 @@
 
+const CHANGE_MODE = 'CHANGE_MODE'
 
-const SET_THEME = 'SET_THEME'
-
-export {SET_THEME}; 
+export { CHANGE_MODE }; 

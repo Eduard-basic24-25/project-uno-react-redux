@@ -8,14 +8,21 @@ import { useSelector } from 'react-redux'
 function Todos() {
   
   const tab = useSelector( state => state.interface.tab)
-  const theme = useSelector(state => state.themes.theme)
+
   const searchString = useSelector(state => state.interface.searchString)
 
+  const mode = useSelector(state => state.themes.settings.mode);
+  const theme = useSelector(state => state.themes.settings[mode]);
+
   return (
-    <div className={`${style.todos} ${tab === 'Important' && !searchString ? style.importantTodo : ''}
-                    ${theme === 'dark' ? style.darkTheme : ''} 
-                    ${theme === 'dark' && tab === 'Important' ? style.importantTodo : ''} 
-                    ${searchString ? style.search : ''} `}>
+    <div className={style.todos}
+         style={
+            searchString ? {backgroundColor: theme.todosStyles.searchBackground} 
+            : tab === 'Important' ? {backgroundColor: theme.todosStyles.importantBackground} 
+            : {backgroundColor: theme.todosStyles.todosBackground}
+          }
+          >
+        
     
         <TodosContainer/>
         <TodoPanel/>

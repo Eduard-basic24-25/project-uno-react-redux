@@ -20,6 +20,7 @@ function TodoCompleted({todoId}) {
 
   return(
     <input 
+        className={style.checkbox}
         type='checkbox'
         onClick = {(e) => e.stopPropagation()}
         onChange= {() => dispatch(todoComplete(selectedListId,todoId))}

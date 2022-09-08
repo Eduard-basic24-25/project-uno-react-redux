@@ -1,9 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
 
 .accountWrapper {
     display: flex;
     gap: 10px;
-    font-family: 'Roboto', sans-serif;
     font-weight: 500;
     font-style: normal;
     margin-bottom: 20px;
@@ -12,32 +10,25 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: blueviolet;
     border-radius: 50%;
     height: 35px;
     width: 35px;
     font-size: 14px;
-    color: #FFFFFF;
     letter-spacing: 0.25px;
-}
-.darkTheme {
-    color: #201F24;
 }
 .nameWrapper {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items:flex-start
+    align-items:flex-start;
 }
 
 .userName {
     font-size: 14px;
     line-height: 20px;
-    color: inherit;
 }
 .userEmail{
     font-size: 12px;
     line-height: 16px;
     letter-spacing: 0.4px;
-    color: rgba(28, 27, 31, 0.6);
 }

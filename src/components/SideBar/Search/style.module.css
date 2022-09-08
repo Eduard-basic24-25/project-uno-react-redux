@@ -1,19 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
 
-.search {
-    font-family: 'Roboto', sans-serif;
+.search[type=search]{
     font-weight: 500;
     font-size: 16px;
-    color: rgba(28, 27, 31, 0.38);
     letter-spacing: 0.5px;
     padding: 20px 50px 20px;
     width: 100%;
     border: none;
-    background: url('../../../img/search.svg') no-repeat left 12px center;
+    background: url('../../../img/searchLightMode.svg') no-repeat left 12px center;
     background-size: 35px;
-    background-color: rgba(28, 27, 31, 0.08);;
     border-radius: 4px 4px 0px 0px;
-    border-bottom: 2px solid rgba(28, 27, 31, 0.38);
     margin-bottom: 30px;
 }
 

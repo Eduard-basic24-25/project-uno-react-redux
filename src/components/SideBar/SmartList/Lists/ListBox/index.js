@@ -8,7 +8,10 @@ function ListBox ({listId, listHeader}) {
 
 
     const dispatch = useDispatch();
-
+    
+    const mode = useSelector(state => state.themes.settings.mode);
+    const theme = useSelector(state => state.themes.settings[mode]);
+    const arrow = require(`../../../../../img/${theme.arrow}.svg`);
     
     const selectedListId = useSelector(state => state.interface.listId)
 
@@ -22,7 +25,11 @@ function ListBox ({listId, listHeader}) {
             onClick={addSelected}>
             <span className={style.listIcon}></span>
             <p className={style.listName}>{listHeader}</p>
-        <span className={style.arrow}></span>
+        <span className={style.arrow}
+              style={{
+                 backgroundImage: `url(${arrow})`
+        }}>
+        </span>
     </div>
     )
 }

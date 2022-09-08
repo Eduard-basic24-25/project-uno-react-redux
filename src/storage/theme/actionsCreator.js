@@ -1,12 +1,12 @@
-import {SET_THEME} from './actions'
+import { CHANGE_MODE } from './actions'
 
-function setTheme (theme) {
+function changeMode (mode) {
     return {
-        type: SET_THEME,
+        type: CHANGE_MODE,
         payload: {
-            theme
+            mode
         }
     }
 }
 
-export {setTheme};
+export { changeMode };

@@ -4,14 +4,8 @@
   width: 100%;
   min-height: 25rem;
   border: none;
-  font-family: 'Roboto';
-  font-style: normal;
   font-weight: 500;
   font-size: 16px;
   height: auto;
   border-bottom: 1px solid #c5c5c5;
-}
-.darkTheme {
-  background-color: inherit;
-  color: inherit;
 }

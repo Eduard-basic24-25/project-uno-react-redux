@@ -4,9 +4,12 @@ import { useSelector } from 'react-redux';
 
 function TodoDesc({todoId}) {
 
+  const mode = useSelector(state => state.themes.settings.mode);
+  const theme = useSelector(state => state.themes.settings[mode]);
+  
   const selectedListId = useSelector(
     state => state.interface.listId)
-  const theme = useSelector(state => state.themes.theme)
+
 
   const todo = useSelector(
 	  state => 
@@ -16,9 +19,19 @@ function TodoDesc({todoId}) {
   )
 
 	return (
-    <div className={style.todoDescr}>
+    <div className={style.todoDescr}
+         style={{
+
+         }}>
+         
       <h2>{todo.title}</h2>
-      <span className={`${style.todoDescrParagraph} ${theme === 'dark' ? style.darkTheme : ''}`}>{todo.note} - {useShowDate(todo.date)}</span>
+      <span 
+          className={style.todoDescrParagraph}
+          style={{
+            color: theme.secondaryColor
+          }}>
+          {todo.note} - {useShowDate(todo.date)}
+      </span>
     </div>
 	)
 }

@@ -1,8 +1,9 @@
-import { useDispatch, useSelector } from 'react-redux';
+import style from './style.module.css'
+
+import { useSelector } from 'react-redux';
 import ListBox from './ListBox/index'
 
 
-import style from './style.module.css'
 
 
 function Lists () {

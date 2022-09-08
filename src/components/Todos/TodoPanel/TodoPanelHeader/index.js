@@ -26,11 +26,18 @@ function TodoPanelHeader(){
         .content.find( list =>  list.id === selectedListId)
         ?.todos.find( todoItem => todoId === todoItem.id)?.completed
   )
-  const theme = useSelector(state => state.themes.theme)
+  
+  const mode = useSelector(state => state.themes.settings.mode);
+  const theme = useSelector(state => state.themes.settings[mode]);
+
   
   return (
 
-    <div className={`${style.todoPanelHeader} ${theme === 'dark' ? style.darkTheme : ''}`}>
+    <div className={style.todoPanelHeader}
+         style={{
+            borderBottom: theme.searchInput.searchBorder,
+            borderBottom: theme.dateInput.border
+    }}>
       <input 
         className={style.checkBox}
         type='checkbox' 
@@ -40,10 +47,13 @@ function TodoPanelHeader(){
       />
 
       <input 
+        style={{
+          backgroundColor: theme.appBackground,
+          color: theme.primaryColor
+        }}
         type='text'  
         value={title ? title : ''} 
-        onChange={(e)=>dispatch(changeTodoTitle(selectedListId,
-          todoId, e.target.value))} 
+        onChange={(e)=>dispatch(changeTodoTitle(selectedListId, todoId, e.target.value))} 
       />
 
       <TodoImportant  todoId={todoId}/>

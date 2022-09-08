@@ -5,7 +5,7 @@ import TodoCompleted from './TodoCompleted';
 import TodoDesc from './TodoDesc';
 import { useDispatch, useSelector } from 'react-redux';
 import { showPanelTodo, selectTodoId } from '../../../../../storage/interface/actionsCreactor';
-import { useTheme } from '../../../../../helpers';
+
 
 
 
@@ -16,7 +16,10 @@ function TodoBox({todoId}) {
   const selectedTodoId = useSelector(state => state.interface.todoId)
 
   const isShowPanelTodo = useSelector(state => state.interface.show)
-  const theme = useSelector(state => state.themes.theme)
+
+  const mode = useSelector(state => state.themes.settings.mode);
+  const theme = useSelector(state => state.themes.settings[mode]);
+
  
   function editTodo() {
     dispatch(selectTodoId(todoId))
@@ -31,7 +34,13 @@ function TodoBox({todoId}) {
 
   return (
     <li 
-        className={`${style.todoItem} ${selectedTodoId === todoId ? style.selected : ''} ${theme === 'dark' ? style.darkTheme : ''}`} 
+        className={style.todoItem}  
+        style={
+          selectedTodoId !== todoId
+          ? {backgroundColor: theme.appBackground, color: theme.primaryColor} 
+          : {backgroundColor: theme.todosStyles.onSurfaceLowBrush}
+          
+        }
         onClick={editTodo}
     >
       <TodoCompleted todoId={todoId} />

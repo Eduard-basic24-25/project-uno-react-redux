@@ -4,11 +4,11 @@ import './common-styles/reset.css';
 import { useSelector } from 'react-redux';
 import SideBar from './components/SideBar';
 import Todos from './components/Todos';
-import RenameModalWindow from './components/Ui-kit/ListHeaderWindows/RenameModalWindow/RenameModalWindow';
-import AddListModalWindow from './components/Ui-kit/AddListModalWindow/AddListModalWindow';
-import DeleteListWindow from './components/Ui-kit/ListHeaderWindows/DeleteListWindow/DeleteListWindow';
 import ModalSettingsWindow from './components/Ui-kit/ModalSettingsWindow';
 import { DefaltList } from './components/defaultComponents/defaultList';
+import ConfirmModal from './components/Ui-kit/ConfirmModal/ConfirmModal';
+import InputModal from './components/Ui-kit/InputModal/InputModal'
+
 
 
 
@@ -16,26 +16,34 @@ function UnoTodo() {
 
   
   const lists = useSelector(state => state.lists.content);
-  const addListModal = useSelector(state => state.interface.addListWindow)
-  const renameModalWindow = useSelector (state => state.interface.showRename)
-  const theme = useSelector (state => state.themes.theme)
+  const showConfirmModal = useSelector(state => state.interface.showConfirmModal);
+  const showInputModal = useSelector(state => state.interface.showInputDialog);
+  const showSettingModal = useSelector(state => state.interface.showSettings);
 
+ 
 
   return (
-      <div className={`${style.mainConteiner} ${theme == 'dark' ? style.darkTheme : ''}`}>
-        <SideBar/>
-        { 
-          !lists.length ? <DefaltList/>:  <Todos/>
-        }
-        {
-          addListModal ? <AddListModalWindow/> : undefined
-        } 
-        {
-          renameModalWindow ?   <RenameModalWindow/> : undefined
-        } 
-          <DeleteListWindow/>
-          <ModalSettingsWindow/>
-      </div>
+    <>
+        <div className={style.mainConteiner}>
+          <SideBar/>
+          { 
+            !lists.length ? <DefaltList/>:  <Todos/>
+          }
+          {
+            showConfirmModal ? <ConfirmModal/> : undefined 
+          }
+          {
+            showInputModal ? <InputModal/> : undefined
+          }
+          {
+            showSettingModal ? <ModalSettingsWindow/> : undefined
+          }
+          {
+            
+          }
+          
+        </div>
+      </>
       
   )
 }

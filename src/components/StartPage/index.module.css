@@ -1,24 +1,12 @@
 .startPage {
   display: flex;
-  background: #FFFFFF;
 }
-.startPageDarkTheme {
-  background: #201F24;
-  color:#fff;
-  
-}
-.logoDarkTheme { 
-  width: 103px;
-  height: 30px;
-  background: url('../../img/uno_platform_logo_dark.png') no-repeat;
-  background-size: contain;
-  background-position: center;
-}
+
 
 .startSideBar {
   padding: 0 60px;
   width: 450px;
-  background-color: inherit;
+  
   height: 100vh;
   display: flex;
   align-items: flex-start;
@@ -32,16 +20,13 @@
   background: url('../../img/welcome_uno.png') no-repeat;
   background-size: contain;
   background-position: center;
-  background-color: rgba(89, 70, 210, 0.08);
-}
-.darkTheme {
-  background-color: rgb(44, 42, 56);
+
 }
 
 .logo {
   width: 103px;
   height: 30px;
-  background: url('../../img/uno_platform_logo.png') no-repeat;
+  background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
 }
@@ -58,26 +43,18 @@
 
 .desc {
   margin-top: 16px;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 16px;
   line-height: 24px;
-  color: #5835E5;
-}
-.descDarkTheme {
-  color : #CBBEFF;
 }
 
 .startedBtn {
   padding: 10px 0;
   width: 100%;
   line-height: 20px;
-  color: #fff;
-  background-color: #5835E5;
+  color: #ffffff;
   border: none;
   border-radius: 20px;
   text-decoration: none;
   text-align: center;
-}
-.btnDarkTheme {
-  background-color: #9373FF;
 }

@@ -11,9 +11,4 @@ input[type=date]{
   color: #5946D2;
   border: none;
 }
-input.darkTheme { 
-  background-color: inherit;
-  color: #5946D2;
-  border: none;
-  color-scheme: dark;
-}
+

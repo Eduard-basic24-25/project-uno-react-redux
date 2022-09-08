@@ -10,7 +10,9 @@ function TodoPanelDate(){
   const selectedListId = useSelector(state => state.interface.listId)
 
   const selectedTodoId = useSelector(state => state.interface.todoId)
-  const theme = useSelector(state => state.themes.theme)
+  const mode = useSelector(state => state.themes.settings.mode);
+  const theme = useSelector(state => state.themes.settings[mode]);
+
   
   const date = useSelector(
     state => 
@@ -20,10 +22,17 @@ function TodoPanelDate(){
   )
 
   return (
-    <div className={`${style.todoPanelDate} ${theme === 'dark' ? style.darkTheme : ''}`}>
+    <div className={style.todoPanelDate}
+         style={{
+          borderBottom: theme.dateInput.border
+         }} >
       <input 
-        className={`${theme === 'dark' ? style.darkTheme : ''}`}
+        style={{
+          backgroundColor:theme.appBackground,
+          colorScheme: theme.dateInput.shemeColor,
+        }}
         type='date' 
+        placeholder='Add Deu Date'
         value={date}
         onChange={(e) => dispatch(changeDate(selectedListId, selectedTodoId, e.target.value))}
       /> 

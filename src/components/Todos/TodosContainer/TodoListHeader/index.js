@@ -1,28 +1,60 @@
-import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 
-import { showDeleteListWindow, showRenameWindow } from '../../../../storage/interface/actionsCreactor'
-
+import { selectListId, showDeleteListWindow, showRenameWindow } from '../../../../storage/interface/actionsCreactor'
+import { deleteList, changeHeader } from '../../../../storage/content/actionsCreactor';
+import { showConfirmDialog, showInputDialog } from '../../../../storage/interface/actionsCreactor';
 import style from './index.module.css'
 
-function TodoListHeader (){
+function TodoListHeader () {
 
   const dispatch = useDispatch();
 
+  const mode = useSelector(state => state.themes.settings.mode);
+  const theme = useSelector(state => state.themes.settings[mode]);
 
-
-  const selectedListId = useSelector(
-    state => state.interface.listId)
+  const selectedListId = useSelector(state => state.interface.listId)
   const tab = useSelector (state => state.interface.tab)
+  const lists = useSelector(state => state.lists.content);
   const searchString = useSelector(state => state.interface.searchString)
-    const header = useSelector(
+  
+  const header = useSelector(
       state => state.lists
     .content.find( list =>  list.id === selectedListId)?.header)
-    
-    function openRenameWindow () {
-      dispatch(showRenameWindow(true))
-    }
 
+
+  
+    const modalConfig = { 
+      header: 'Are you sure?',
+      description: 'List will be permenently deleted',
+      confirm: 'Delete', 
+      action: removeList,
+  }
+    const inputModalConfig = {
+      header: 'Rename list',
+      placeholder: 'Rename list',
+      confirm: 'Rename',
+      action: changeTodoListHeader,
+    }
+        
+    function changeTodoListHeader(title) {
+      dispatch(changeHeader(selectedListId,title))
+      dispatch(showInputDialog(false))
+}
+    function removeList () {
+      if (lists.length>1) { 
+          if (selectedListId == lists[0].id){
+              dispatch(selectListId(lists[1].id))
+              console.log(selectedListId, lists[1].id)
+          } else {
+              dispatch(selectListId(lists[0].id))
+              console.log(selectedListId, lists[0].id)
+          }
+      } else{
+          
+      }
+      dispatch(deleteList(selectedListId))
+      dispatch(showConfirmDialog(false))
+}
  
   if(searchString){
     return (
@@ -53,13 +85,13 @@ function TodoListHeader (){
         {header}
       </p>
       <div className={style.headingBtnWrapper}>
-      <button
+        <button
           className={`${style.headingBtn} ${style.headingEdit}`}
-          onClick={openRenameWindow}
-        ></button>
+          onClick={() => dispatch(showInputDialog(true, inputModalConfig))}>
+        </button>
         <button
           className={`${style.headingBtn} ${style.headingDelete}`}
-          onClick={() => dispatch(showDeleteListWindow(true))}
+          onClick={() => dispatch(showConfirmDialog(true, modalConfig))}
         ></button>
       </div>
     </div>

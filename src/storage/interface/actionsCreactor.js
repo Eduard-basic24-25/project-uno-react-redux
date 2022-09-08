@@ -2,13 +2,10 @@ import  { SHOW_PANEL_TODO,
           SELECT_TODO_ID, 
           SELECT_LIST_ID, 
           SET_ACTIV_TAB,
-          SHOW_MODAL_WINDOW,
-          SHOW_CONFIRM_WINDOW,
-          SHOW_RENAME_WINDOW,
-          SHOW_DELETE_LIST_WINDOW,
-          SHOW_ADD_LIST_WINDOW,
           SHOW_SETTINGS_WINDOW,
           SEARCH_STRING,
+          SHOW_CONFIRM_DIALOG,
+          SHOW_INPUT_MODAL,
          } from './actions';
 
 function showPanelTodo (show) {
@@ -19,51 +16,31 @@ function showPanelTodo (show) {
         }
     }
 }
-function showModalWindow (showModal) {
+
+function showConfirmDialog (showConfirmModal,modalConfig) {
     return {
-        type: SHOW_MODAL_WINDOW,
+        type: SHOW_CONFIRM_DIALOG,
         payload:{ 
-            showModal,
+            showConfirmModal,
+            modalConfig,
         }
     }
 }
-function showAddListWindow (addListWindow) {
+function showInputDialog (showInputDialog,inputModalConfig,inputModalConfigTask) {
     return {
-        type: SHOW_ADD_LIST_WINDOW,
+        type: SHOW_INPUT_MODAL,
         payload:{ 
-            addListWindow,
+            showInputDialog,
+            inputModalConfig,
         }
     }
 }
-function showConfirmWindow (showConfirm) {
-    return {
-        type: SHOW_CONFIRM_WINDOW,
-        payload:{ 
-            showConfirm,
-        }
-    }
-}
-function showDeleteListWindow (showListDelete) {
-    return {
-        type: SHOW_DELETE_LIST_WINDOW,
-        payload:{ 
-            showListDelete,
-        }
-    }
-}
+
 function showSettingsWindow (showSettings) {
     return {
         type: SHOW_SETTINGS_WINDOW,
         payload:{ 
             showSettings,
-        }
-    }
-}
-function showRenameWindow (showRename) {
-    return {
-        type: SHOW_RENAME_WINDOW,
-        payload:{ 
-            showRename,
         }
     }
 }
@@ -104,11 +81,8 @@ export  {showPanelTodo,
          selectTodoId, 
          selectListId, 
          setActivTab, 
-         showModalWindow, 
-         showConfirmWindow,
-         showRenameWindow,
-         showDeleteListWindow,
-         showAddListWindow,
          showSettingsWindow,
          setSearchString,
+         showConfirmDialog,
+         showInputDialog,
         };

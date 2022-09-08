@@ -5,7 +5,7 @@
     left: 0;
     top: 0;
     backdrop-filter: blur(4px);
-    display: none;
+    display: flex;
 }
 .wrapper {
     width: 500px;
@@ -23,9 +23,6 @@
     transform: translate(-50%, -50%);
     z-index: 100;
 }
-.shownModal {
-    display: flex;
-}
 .title {
     font-family: 'Roboto';
     font-style: normal;
@@ -33,7 +30,7 @@
     font-size: 22px;
     line-height: 28px;
 }
-.input {
+.input[type='text'] {
     padding: 17px 16px;
     background: #FAF9FB;
     outline:none; 
@@ -68,14 +65,18 @@
     line-height: 20px;
 }
 .add {
-    padding: 10px 16px 10px 16px;
-    background: #5946D2;
+    padding: 10px 16px 10px 27px;
     color: #FFFFFF;
     border-radius: 20px;
     border: none;
     cursor: pointer;
     width: 92px;
+    background: url('../../../img/plus.svg') no-repeat left 16px center;
+    background-color: #5946D2;
+    background-size: 13px;
+    font-size: 14px;
+    font-weight: 500;
 }
 .disabled {
-    background: #7666dd;
+    background: #8472f6;
 }
