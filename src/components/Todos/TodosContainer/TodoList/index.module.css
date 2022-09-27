@@ -32,3 +32,12 @@
   line-height: 20px;
   color: rgba(28, 27, 31, 0.38);
 }
+
+.notFaund {
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  
+}

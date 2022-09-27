@@ -33,7 +33,7 @@ function TodoPanelDate(){
         }}
         type='date' 
         placeholder='Add Deu Date'
-        value={date}
+        value={date}  
         onChange={(e) => dispatch(changeDate(selectedListId, selectedTodoId, e.target.value))}
       /> 
     </div>

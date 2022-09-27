@@ -166,7 +166,7 @@ button {
     font-weight: 500;
 }
 
-.cancelSaveBtns {
+.cancelAndSaveBtns {
     text-align: end;
     display: flex;
     justify-content: end;

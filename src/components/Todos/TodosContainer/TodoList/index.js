@@ -7,10 +7,12 @@ import { useSelector } from 'react-redux';
 
 function TodoList() {
 
-  const selectedListId = useSelector(state => state.interface.listId)
-
+  const selectedListId = useSelector(state => state.interface.listId) 
+  
   const todos = useSelector(state => 
-      state.lists.content.find( list =>  list.id === selectedListId)?.todos)
+      state.lists.content.find( list => list.id === selectedListId)?.todos) 
+     
+
 
   const tab = useSelector( state => state.interface.tab);
 
@@ -18,9 +20,9 @@ function TodoList() {
 
   const completedTodos = useSelector( state => 
     state.lists.content?.find( list => list.id === selectedListId)?.todos.filter( todo => todo.completed));
- 
+   
 
-  const importantTodos = useSelector( state => 
+  const importantTodos = useSelector( state =>
     state.lists.content.find( list => list.id === selectedListId)?.todos.filter( todo => todo.important));
    
 
@@ -28,30 +30,27 @@ function TodoList() {
 
     if(searchString) {
       const lowSearchString = searchString.toLowerCase();
-      renderTodos = todos.filter(todo => todo.title.toLowerCase().includes(lowSearchString))
+      renderTodos = todos.filter(todo => todo.title.toLowerCase().includes(lowSearchString)) 
     } else {
       if(tab === 'Completed'){
-        renderTodos = completedTodos;
+        renderTodos = completedTodos ;
       } else if (tab === 'Important') {
-        renderTodos = importantTodos
+        renderTodos = importantTodos 
       } else {
         renderTodos = todos;
       }
     }
 
+   
   return (
 
   
      <ul className={style.todoList}>
-      {}
-        {  
-        !todos?.length 
-        ? <div className={style.defaultWrapper}>
-            <h2 className={style.header}>Task not found</h2>
-            <p className={style.descr}>Please create any Task</p>
-          </div>
-        : renderTodos.map(todo => {
-          return <TodoBox key={todo.id} todoId={todo.id}/>
+        { 
+          !todos?.length 
+          ? <DefaultTodos/>
+          : renderTodos.map(todo => {
+            return <TodoBox key={todo.id} todoId={todo.id}/>
         })}
     </ul>
   )

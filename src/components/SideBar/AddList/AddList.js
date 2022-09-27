@@ -1,13 +1,15 @@
 import style from './style.module.css';
 
-import { showInputDialog } from '../../../storage/interface/actionsCreactor';
+import { selectListId, showInputDialog } from '../../../storage/interface/actionsCreactor';
 import { useDispatch, useSelector } from 'react-redux';
 import { addList } from '../../../storage/content/actionsCreactor';
+import { createDate } from '../../../helpers';
 
 
 
 function AddList () {
 
+    const dispatch = useDispatch();
 
     const inputModalConfig = {
         header: 'New list',
@@ -15,20 +17,23 @@ function AddList () {
         confirm: 'Create',
         action: addNewList,
       }
-    const dispatch = useDispatch();
 
-    
+
     const mode = useSelector(state => state.themes.settings.mode);
     const theme = useSelector(state => state.themes.settings[mode]);
 
         
     
     function addNewList (title, setTitle) {
-        dispatch(addList(title))
+
+        const dateNow = Date.now();
+
+        dispatch(addList(title, dateNow))
+        dispatch(selectListId(dateNow))
         setTitle('')
         dispatch(showInputDialog(false))
     }
-    
+
   
     return ( 
         <button 

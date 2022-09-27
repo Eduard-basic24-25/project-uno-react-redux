@@ -5,24 +5,21 @@ import AddTodo from './AddTodo'
 import TodoListHeader from './TodoListHeader'
 import { useDispatch, useSelector } from 'react-redux';
 import { setActivTab } from '../../../storage/interface/actionsCreactor'
-import { DefaultTodos } from '../../defaultComponents/defaultTodos';
+
 
 
 function TodosContainer() {
 
   const dispatch = useDispatch();
 
-  const selectedListId = useSelector(state => state.interface.listId)
-  const todos = useSelector(state => 
-    state.lists.content.find( list =>  list.id === selectedListId)?.todos)
-
   const tab = useSelector( state => state.interface.tab);
-  
+
   const mode = useSelector(state => state.themes.settings.mode);
   const theme = useSelector(state => state.themes.settings[mode]);
 
   const showPanel = useSelector (state => state.interface.show);
   const searchString = useSelector(state => state.interface.searchString)
+  
   
   return (
     <>
@@ -32,7 +29,8 @@ function TodosContainer() {
         <section className={style.todosSection}>
          
           <div>
-
+          
+          
             <TodoListHeader/>
             {
               tab === 'Important' || searchString 
@@ -41,7 +39,7 @@ function TodosContainer() {
                   <button
                     className={style.todosBtn}   
                     style= {
-                       tab === 'Todo'
+                       tab === 'Todo' || tab === 'Tasks'
                       ? {color: theme.tabsStyles.activeTab.tabsColor, 
                         borderBottom: theme.tabsStyles.activeTab.borderBottom}
                       : {color: theme.tabsStyles.unActiveTab.tabsColor, 
@@ -64,7 +62,7 @@ function TodosContainer() {
                   >Completed</button>
                </div>
             )}
-          
+           
             <TodoList/>
 
           </div>

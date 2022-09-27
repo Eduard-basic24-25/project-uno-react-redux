@@ -10,11 +10,9 @@ import { useSelector } from 'react-redux'
 function TodoPanel(){
 
   const isShownPanelTodo = useSelector(state => state.interface.show);
-  
+
   const mode = useSelector(state => state.themes.settings.mode);
   const theme = useSelector(state => state.themes.settings[mode]);
-
-
   const selectedListId = useSelector(state => state.interface.listId);
   const selectedTodoId = useSelector( state => state.interface.todoId);
   
@@ -27,11 +25,19 @@ function TodoPanel(){
              style={{
               backgroundColor: theme.appBackground,
               borderBottom: theme.dateInput.border
-             }}>
-      <TodoPanelHeader/>
-      <TodoPanelDate/>
-      <TodoPanelNote/>
-      <TodoPanelDelete createTodoDate={todo?.createDate}/>
+             }}
+    >
+        {
+          selectedTodoId 
+          ? <>
+            <TodoPanelHeader/>
+            <TodoPanelDate/> 
+            <TodoPanelNote/>
+            <TodoPanelDelete createTodoDate={todo?.createDate}/>
+            </>
+          : undefined 
+          }
+
     </section>  
   )
 }

@@ -27,5 +27,4 @@ export {
 	ADD_LIST,
 	DELETE_LIST,
 	SHOW_ALL_TODOS,
-	
 };

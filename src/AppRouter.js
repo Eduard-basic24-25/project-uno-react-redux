@@ -1,14 +1,19 @@
 import {
-  BrowserRouter as Router, // Роутер, который использует функционал браузера
-  Routes, // рендерит первый <Route>, совпавший с URL
-  Route, //укажет маршруты path="..." element={<.../>}
+  BrowserRouter as Router, 
+  Routes, 
+  Route, 
 } from 'react-router-dom';
 
 import StartPage from './components/StartPage';
 import UnoTodo from './UnoTodo';
 
-function AppRouter() {
+window.env = {
+  ENV_HOST: '/project-uno-practice/'
+};
 
+function AppRouter() {
+  const host = window.env.ENV_HOST;
+  
   return (
     <Router>
       <Routes>

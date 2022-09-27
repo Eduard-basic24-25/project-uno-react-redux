@@ -2,7 +2,7 @@ import style from './index.module.css'
 
 import { useSelector } from 'react-redux';
 
-export const DefaultTodos = () => {
+export const DefaultSearch = () => {
 
     
   const mode = useSelector(state => state.themes.settings.mode);
@@ -15,7 +15,7 @@ export const DefaultTodos = () => {
             background:theme.todosStyles.todosBackground
         }}>
             <h2 className={style.header}>Task not found</h2>
-            <p className={style.descr}>Please create any Task</p>
+            <p className={style.descr}>We searched high and low but couldn't find what you're looking for</p>
         </div>
        
     )

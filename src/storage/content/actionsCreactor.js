@@ -11,8 +11,6 @@ import {
 	ADD_TODO,
 	ADD_IMPORTANT_TODO,
 	ADD_LIST,
-	
-	
 } from './actions.js';
 import { createDate } from '../../helpers/index.js';
 
@@ -140,11 +138,11 @@ function addImportantTodo(title,selectedListId) {
 		} 
 	}
 }
-function addList(title) {
+function addList(title,id) {
 	return {
 		type: ADD_LIST,
 		payload: {
-				id: Date.now(),
+				id,
 				header: title,
 				todos: [],
 		}

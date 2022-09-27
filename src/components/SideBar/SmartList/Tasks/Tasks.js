@@ -26,7 +26,7 @@ function Tasks () {
                 }}>
                 </span>
             </div>
-            <div className={`${style.wrapper} ${tab === 'Tasks' ? style.tasks : '' }`}  
+            <div className={`${style.wrapper} ${tab === 'Tasks' || tab === 'Todo' ? style.tasks : '' }`}  
                  onClick={() => dispatch(setActivTab('Tasks'))}>
 
                 <span className={style.house}></span>

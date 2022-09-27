@@ -2,7 +2,7 @@ import { CHANGE_MODE } from './actions'
 
 const initialState = {
     settings: {
-        mode: 'darkTheme',
+        mode: 'lightTheme',
         lightTheme: {
             appBackground: '#ffffff',
             primaryColor: '#1C1B1F',
@@ -126,7 +126,7 @@ const initialState = {
             todosStyles: {
                 todosBackground:'rgba(84, 71, 148, 1)',
                 importantBackground: '#F85977',
-                searchBackground : '#F4F4F4',
+                searchBackground : '#252429',
                 onSurfaceLowBrush: 'rgba(255, 255, 255, 0.5)'
             },
             inverseTabsColor: {

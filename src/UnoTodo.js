@@ -4,10 +4,10 @@ import './common-styles/reset.css';
 import { useSelector } from 'react-redux';
 import SideBar from './components/SideBar';
 import Todos from './components/Todos';
-import ModalSettingsWindow from './components/Ui-kit/ModalSettingsWindow';
+import ModalSettingsWindow from './components/ModalWindows/ModalSettingsWindow';
 import { DefaltList } from './components/defaultComponents/defaultList';
-import ConfirmModal from './components/Ui-kit/ConfirmModal/ConfirmModal';
-import InputModal from './components/Ui-kit/InputModal/InputModal'
+import ConfirmModal from './components/ModalWindows/ConfirmModal/ConfirmModal';
+import InputModal from './components/ModalWindows/InputModal/InputModal'
 
 
 
@@ -15,7 +15,7 @@ import InputModal from './components/Ui-kit/InputModal/InputModal'
 function UnoTodo() {
 
   
-  const lists = useSelector(state => state.lists.content);
+  const listId = useSelector(state => state.interface.listId);
   const showConfirmModal = useSelector(state => state.interface.showConfirmModal);
   const showInputModal = useSelector(state => state.interface.showInputDialog);
   const showSettingModal = useSelector(state => state.interface.showSettings);
@@ -27,7 +27,7 @@ function UnoTodo() {
         <div className={style.mainConteiner}>
           <SideBar/>
           { 
-            !lists.length ? <DefaltList/>:  <Todos/>
+            !listId ? <DefaltList/> : <Todos/>
           }
           {
             showConfirmModal ? <ConfirmModal/> : undefined 
@@ -37,9 +37,6 @@ function UnoTodo() {
           }
           {
             showSettingModal ? <ModalSettingsWindow/> : undefined
-          }
-          {
-            
           }
           
         </div>

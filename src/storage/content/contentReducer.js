@@ -1,134 +1,25 @@
-import { TODO_COMPLETE, 
-         TODO_IMPORTANT, 
-         TODO_SELECTED, 
-         CHANGE_HEADER, 
-         CHANGE_DATE,
-         DELETE_TODO,
-         DELETE_LIST,
-         CHANGE_TODO_TITLE,
-         CHANGE_TODO_NOTE,
-         ADD_TODO,
-         ADD_IMPORTANT_TODO,
-         ADD_LIST,
-         SHOW_ALL_TODOS,
-        } from './actions';
-
-import { createDate } from '../../helpers';
-
+import { 
+    TODO_COMPLETE, 
+    TODO_IMPORTANT, 
+    TODO_SELECTED, 
+    CHANGE_HEADER, 
+    CHANGE_DATE,
+    DELETE_TODO,
+    DELETE_LIST,
+    CHANGE_TODO_TITLE,
+    CHANGE_TODO_NOTE,
+    ADD_TODO,
+    ADD_IMPORTANT_TODO,
+    ADD_LIST,
+    SHOW_ALL_TODOS,
+} from './actions';
 
 
-const initialState = {
-  content: [
-    {
-      id: 44444, 
-      header: 'Task list',
-      todos: [
-        {
-          id: '11111',
-          title: 'Todo 1',
-          note: 'Do something important',
-          date: createDate(),
-          createDate: createDate(),
-          completed: true,
-          important: true,
-          selected: false,
-        },
-        {
-          id: '22222',
-          title: 'Todo 2',
-          note: 'Do something important',
-          date: createDate(),
-          createDate: createDate(),
-          completed: true,
-          important: true,
-          selected: false,
-        },
-        {
-          id: '33333',
-          title: 'Todo 3',
-          note: 'Do something',
-          date: createDate(),
-          createDate: createDate(),
-          completed: true,
-          important: true,
-          selected: false,
-        },
-      ]
-    },
-    {
-      id: 44442,
-      header: 'Second Task list',
-      todos: [
-        {
-          id: '11111',
-          title: 'Todo 3',
-          note: 'Do something important',
-          date: createDate(),
-          createDate: createDate(),
-          completed: true,
-          important: true,
-          selected: false,
-        },
-        {
-          id: '22222',
-          title: 'Todo 4',
-          note: 'Do something important',
-          date: createDate(),
-          createDate: createDate(),
-          completed: true,
-          important: true,
-          selected: false,
-        },
-        {
-          id: '33333',
-          title: 'Todo 5',
-          note: 'Do something',
-          date: createDate(),
-          createDate: createDate(),
-          completed: true,
-          important: true,
-          selected: false,
-        },
-      ]
-    },
-    {
-      id: 44443,
-      header: 'Third Task list',
-      todos: [
-        {
-          id: '11111',
-          title: 'Todo 6',
-          note: 'Do something important',
-          date: createDate(),
-          createDate: createDate(),
-          completed: true,
-          important: true,
-          selected: false,
-        },
-        {
-          id: '22222',
-          title: 'Todo 7',
-          note: 'Do something important',
-          date: createDate(),
-          createDate: createDate(),
-          completed: true,
-          important: true,
-          selected: false,
-        },
-        {
-          id: '33333',
-          title: 'Todo 8',
-          note: 'Do something',
-          date: createDate(),
-          createDate: createDate(),
-          completed: true,
-          important: true,
-          selected: false,
-        },
-      ]
-    },
-  ]
-}
+
+
+export const initialState = {
+  content: []
+};
 
 function contentReducer(state = initialState, {type, payload}) {
   switch(type){

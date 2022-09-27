@@ -1,12 +1,13 @@
-import  { SHOW_PANEL_TODO, 
-          SELECT_TODO_ID, 
-          SELECT_LIST_ID, 
-          SET_ACTIV_TAB,
-          SHOW_SETTINGS_WINDOW,
-          SEARCH_STRING,
-          SHOW_CONFIRM_DIALOG,
-          SHOW_INPUT_MODAL,
-         } from './actions';
+import { 
+    SHOW_PANEL_TODO, 
+    SELECT_TODO_ID, 
+    SELECT_LIST_ID, 
+    SET_ACTIV_TAB,
+    SHOW_SETTINGS_WINDOW,
+    SEARCH_STRING,
+    SHOW_CONFIRM_DIALOG,
+    SHOW_INPUT_MODAL,
+} from './actions';
 
 function showPanelTodo (show) {
     return {

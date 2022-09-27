@@ -1,12 +1,16 @@
-import  { SHOW_PANEL_TODO, 
-          SELECT_TODO_ID, 
-          SELECT_LIST_ID, 
-          SET_ACTIV_TAB, 
-          SHOW_SETTINGS_WINDOW,
-          SEARCH_STRING,
-          SHOW_CONFIRM_DIALOG,
-          SHOW_INPUT_MODAL,
-           } from './actions';
+import { 
+    SHOW_PANEL_TODO, 
+    SELECT_TODO_ID, 
+    SELECT_LIST_ID, 
+    SET_ACTIV_TAB, 
+    SHOW_SETTINGS_WINDOW,
+    SEARCH_STRING,
+    SHOW_CONFIRM_DIALOG,
+    SHOW_INPUT_MODAL,
+} from './actions';
+import { initialState as listsContent } from '../content/contentReducer';
+
+const lists = listsContent.content;
 
 const initialState = {
     showConfirmModal: false,
@@ -15,8 +19,8 @@ const initialState = {
     inputModalConfig: {},
     show: false,
     showSettings:false,
-    todoId : 0,
-    listId: 44444,
+    todoId : null,
+    listId: null,
     tab:'Tasks',
     searchString:'',
 };

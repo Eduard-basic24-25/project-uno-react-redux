@@ -7,7 +7,17 @@
   justify-content: center;
   align-items: center;
 }
-
+.defaultWrapperTodos {
+  width: 100%;
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.container {
+  display: flex;
+}
 .header {
     font-weight: 400;
     font-size: 28px;

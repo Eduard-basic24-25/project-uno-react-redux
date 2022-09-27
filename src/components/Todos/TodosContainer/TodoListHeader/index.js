@@ -1,9 +1,13 @@
-import { useDispatch, useSelector } from 'react-redux';
+import style from './index.module.css'
 
-import { selectListId, showDeleteListWindow, showRenameWindow } from '../../../../storage/interface/actionsCreactor'
+import { useDispatch, useSelector } from 'react-redux';
+import { selectListId } from '../../../../storage/interface/actionsCreactor';
+import { SearchPage } from './SearchPage';
 import { deleteList, changeHeader } from '../../../../storage/content/actionsCreactor';
 import { showConfirmDialog, showInputDialog } from '../../../../storage/interface/actionsCreactor';
-import style from './index.module.css'
+import { ImportantPage } from './ImportantPage';
+import { useEffect } from 'react';
+
 
 function TodoListHeader () {
 
@@ -39,7 +43,8 @@ function TodoListHeader () {
     function changeTodoListHeader(title) {
       dispatch(changeHeader(selectedListId,title))
       dispatch(showInputDialog(false))
-}
+    }
+
     function removeList () {
       if (lists.length>1) { 
           if (selectedListId == lists[0].id){
@@ -50,32 +55,24 @@ function TodoListHeader () {
               console.log(selectedListId, lists[0].id)
           }
       } else{
-          
+         dispatch(selectListId(null))
       }
       dispatch(deleteList(selectedListId))
       dispatch(showConfirmDialog(false))
-}
- 
+    } 
+
   if(searchString){
     return (
       <div className={style.headingWrapper}>
-
-        <p className={style.todosHeading}>
-          Search
-        </p>
-     
-    </div>
+        <SearchPage/>
+      </div>
   )
   }  
   if(tab === 'Important'){
     return (
       <div className={style.headingWrapper}>
-
-        <p className={style.todosHeading}>
-          {tab}
-        </p>
-     
-    </div>
+        <ImportantPage/>
+      </div>
   )
   }  
   return (

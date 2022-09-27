@@ -110,6 +110,7 @@ function useCheckboxInput(defaultValue){
 }
 
 function useShowDate(value){
+
   const date = new Date(value);
 
   const week = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -120,9 +121,12 @@ function useShowDate(value){
 
   const day = date.getDate();
   const currentDay = day < 10 ? `0${day}` : day;
-
-  return `${weekDay}, ${currentDay} ${month}`
+  if(weekDay && currentDay && month) {
+    return `${weekDay}, ${currentDay} ${month}`
+  } 
+  return 'Choose correct date'  
+    
 }
-// console.log(uTestShownDate());
+
 
 export { useDate, useLists, useTextInput, useCheckboxInput, createDate, useShowDate };
